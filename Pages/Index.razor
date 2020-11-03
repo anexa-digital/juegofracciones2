@@ -1,0 +1,200 @@
+﻿@page "/"
+@using static Elias_BlazorApp5.Startup;
+@using System.Threading;
+@using System;
+
+
+<AuthorizeView>
+    <Authorized>
+        @if (99 == 99)
+        {
+            int result;
+
+            if (Globales.dictionary.TryGetValue(@context.User.Identity.Name, out result))
+            {
+
+                Console.WriteLine(result);
+            }
+            else
+            {
+                Globales.participantes++;
+                Globales.dictionary.Add(@context.User.Identity.Name, Globales.participantes);
+                Console.WriteLine($"agregado {@context.User.Identity.Name}");
+            }
+
+        }
+        <table class="table">
+            <tbody>
+
+
+                @for (int i = 0; i < 4; i++)
+                {
+                    var local_i = i;
+                    var buttonText1 = "";
+                <tr>
+                    @for (int j = 0; j < 3; j++)
+                    {
+                        @if (Globales.arrayVisible[i, j].num == 99)
+                        {
+                            buttonText1 = "_❓_";
+                        }
+                        else if (Globales.arrayVisible[i, j].num == 0)
+                        {
+                            buttonText1 = "_✅_";
+                        } else
+                        {
+                            buttonText1 = Globales.arrayVisible[i, j].num.ToString() + " / " + Globales.arrayVisible[i, j].den.ToString();
+                        }
+                        var bi = i;
+                        var bj = j;
+                        <td><button @ondblclick="@(() => DoubleClick(bi, bj, @context.User.Identity.Name))" @onclick="@(() => buttonClick(bi, bj, @context.User.Identity.Name))" class="btn btn-primary" SizeMode="SizeMode.Large">@buttonText1</button></td>
+                    }
+                </tr>
+                }
+            </tbody>
+        </table>
+
+
+        <table class="table">
+            <tbody>
+                Aciertos
+                @foreach (string element in Globales.aciertos)
+                {
+                    <tr>
+                        @element;
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+        <SurveyPrompt Title="Es divertido aprender?" />
+    </Authorized>
+</AuthorizeView>
+
+@code {
+    private int currentCount = 0;
+    private int iniciado = 0;
+    private Fraction[,] arrayData = new Fraction[6, 12];
+    private Fraction[,] arrayVisible = new Fraction[6, 12];
+
+    protected override void OnInitialized()
+    {
+        StartAutoRefresh();
+
+    }
+
+
+
+    public class Fraction
+    {
+        public int num { get; set; }
+        public int den { get; set; }
+
+        public Fraction()
+        {
+        }
+    }
+
+
+    void StartAutoRefresh()
+    {
+        var timer = new Timer(new TimerCallback(_ =>
+        {
+
+            //this.StateHasChanged();
+            InvokeAsync(() =>
+            {
+                StateHasChanged();
+            });
+        }), null, 1000, 1000);
+    }
+
+
+    void buttonClick(int i, int j, string user)
+    {
+        Console.WriteLine($"Edit item: {i},{j},{user}  intento: {Globales.intentos}");
+        if (Globales.arrayVisible[i, j].num == 99)
+        {
+            //DEjelo destapar solo si es el turno
+            if (Globales.turno == user)
+            {
+
+                if (Globales.intentos < 2)
+                {
+                    Globales.intentos++;
+                    Console.WriteLine($"Edit item: {i},{j},{user}  intento: {Globales.intentos}");
+                    Globales.arrayVisible[i, j] = Globales.arrayData[i, j];
+                }
+            }
+            else
+            {
+                // pregunte si ya el otro completó sus 2 turnos
+                if (Globales.intentos >= 2)
+                {
+                    Globales.intentos = 1;
+                    Globales.turno = user;
+                    Console.WriteLine($"Edit item: {i},{j},{user}  intento: {Globales.intentos}");
+                    Globales.arrayVisible[i, j] = Globales.arrayData[i, j];
+                }
+
+                //Console.WriteLine($"Edit item: {i},{j},{user}  intento: {Globales.intentos}");
+                //Globales.arrayVisible[i, j] = Globales.arrayData[i, j];
+            }
+
+        }
+    }
+
+
+    void DoubleClick1(int i, int j, string user)
+    {
+        Console.WriteLine($"DOBLE CLICK:   {i},{j},{user} ");
+
+    }
+
+
+    void DoubleClick(int i, int j, string user)
+    {
+        Console.WriteLine($"DOBLE CLICK:   {i},{j},{user} ");
+        if (Globales.arrayVisible[i, j].num < 99 && Globales.arrayVisible[i, j].num > 0)
+        {
+            //DEjelo destapar solo si es el turno
+            if (Globales.turno == user)
+            {
+                if (Globales.prospectos == 0)
+                {
+                    Globales.anteriorX = i;
+                    Globales.anteriorY = j;
+                    Globales.prospectos = 1;
+                } else if (Globales.prospectos == 1)
+                {
+                    Globales.prospectos = 0;
+                    //  Preguntar si son equivalentes
+                    int num1 = Globales.arrayVisible[Globales.anteriorX, Globales.anteriorY].num;
+                    int den1 = Globales.arrayVisible[Globales.anteriorX, Globales.anteriorY].den;
+                    int num2 = Globales.arrayVisible[i, j].num;
+                    int den2 = Globales.arrayVisible[i, j].den;
+                    int cociente = (num1 * den2) / (num2 * den1);
+                    if (cociente == 1)
+                    {
+                        Console.WriteLine($"DOBLE CLICK:  FRACCION EQUJIVALENTE   {i},{j},{user} ");
+                        Globales.aciertos.Add($"{user} encontró 2 fracciones equivalentes: {num1} / {den1} con {num2} / {den2} ");
+                        Globales.arrayVisible[i, j].num = 0;
+                        Globales.arrayVisible[Globales.anteriorX, Globales.anteriorY].num = 0;
+
+                    }
+
+                }
+
+
+            }
+        }
+    }
+
+    void testload()
+    {
+        Console.WriteLine($"test load: ");
+
+    }
+
+}
