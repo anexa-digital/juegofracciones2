@@ -170,14 +170,14 @@
                 {
                     Globales.prospectos = 0;
                     //  Preguntar si son equivalentes
-                    int num1 = Globales.arrayVisible[Globales.anteriorX, Globales.anteriorY].num;
-                    int den1 = Globales.arrayVisible[Globales.anteriorX, Globales.anteriorY].den;
-                    int num2 = Globales.arrayVisible[i, j].num;
-                    int den2 = Globales.arrayVisible[i, j].den;
-                    int cociente = (num1 * den2) / (num2 * den1);
-                    if (cociente == 1)
+                    double num1 = Globales.arrayVisible[Globales.anteriorX, Globales.anteriorY].num;
+                    double den1 = Globales.arrayVisible[Globales.anteriorX, Globales.anteriorY].den;
+                    double num2 = Globales.arrayVisible[i, j].num;
+                    double den2 = Globales.arrayVisible[i, j].den;
+                    double cociente = (num1 * den2) / (num2 * den1);
+                    if (cociente == 1.0 && Globales.anteriorX != i && Globales.anteriorY != j)
                     {
-                        Console.WriteLine($"DOBLE CLICK:  FRACCION EQUJIVALENTE   {i},{j},{user} ");
+                        Console.WriteLine($"DOBLE CLICK:  FRACCION EQUJIVALENTE   {i},{j},{user}, cociente {cociente} ");
                         Globales.aciertos.Add($"{user} encontró 2 fracciones equivalentes: {num1} / {den1} con {num2} / {den2} ");
                         Globales.arrayVisible[i, j].num = 0;
                         Globales.arrayVisible[Globales.anteriorX, Globales.anteriorY].num = 0;
