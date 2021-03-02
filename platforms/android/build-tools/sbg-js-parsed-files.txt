@@ -1,0 +1,9 @@
+/home/gerardo/NativeScript/mhapp/platforms/android/app/src/main/assets/app/0.js
+/home/gerardo/NativeScript/mhapp/platforms/android/app/src/main/assets/app/4.js
+/home/gerardo/NativeScript/mhapp/platforms/android/app/src/main/assets/app/tns-java-classes.js
+/home/gerardo/NativeScript/mhapp/platforms/android/app/src/main/assets/app/vendor.js
+/home/gerardo/NativeScript/mhapp/platforms/android/app/src/main/assets/app/3.js
+/home/gerardo/NativeScript/mhapp/platforms/android/app/src/main/assets/app/runtime.js
+/home/gerardo/NativeScript/mhapp/platforms/android/app/src/main/assets/app/1.js
+/home/gerardo/NativeScript/mhapp/platforms/android/app/src/main/assets/app/2.js
+/home/gerardo/NativeScript/mhapp/platforms/android/app/src/main/assets/app/bundle.js

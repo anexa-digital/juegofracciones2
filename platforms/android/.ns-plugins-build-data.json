@@ -1,0 +1,27 @@
+{
+	"nativescript-contacts": {
+		"/home/gerardo/NativeScript/mhapp/node_modules/nativescript-contacts/platforms/android/AndroidManifest.xml": "096b83228f21d5dd9f028efb7b4cdbf3fd4ab555",
+		"/home/gerardo/NativeScript/mhapp/node_modules/nativescript-contacts/platforms/android/nativescript_contacts.aar": "a6da5ce8c2e620d71fbf4a2e4ab3eaf391b59877"
+	},
+	"nativescript-ui-autocomplete": {
+		"/home/gerardo/NativeScript/mhapp/node_modules/nativescript-ui-autocomplete/platforms/android/include.gradle": "f3cee71f7a1cfc3f567bb82cf49fe10a8cccd33a",
+		"/home/gerardo/NativeScript/mhapp/node_modules/nativescript-ui-autocomplete/platforms/android/typings/autocomplete.d.ts": "b28897ff3cd671de6e1cbce383b948ed90a5df04",
+		"/home/gerardo/NativeScript/mhapp/node_modules/nativescript-ui-autocomplete/platforms/android/TNSAutoComplete-release.aar": "9383db03ea86b279cf521c2205867a873397a525"
+	},
+	"nativescript-ui-listview": {
+		"/home/gerardo/NativeScript/mhapp/node_modules/nativescript-ui-listview/platforms/android/include.gradle": "47ffe675113a982585b2386750b2d4305b66b6ca",
+		"/home/gerardo/NativeScript/mhapp/node_modules/nativescript-ui-listview/platforms/android/typings/listview.d.ts": "cfe568cc7a9735ab328356785be9ff94f6d5dfa9",
+		"/home/gerardo/NativeScript/mhapp/node_modules/nativescript-ui-listview/platforms/android/TNSListView-release.aar": "4d5af3ecb16ba6d74cf54e30b17c6deff912b7c9"
+	},
+	"nativescript-ui-sidedrawer": {
+		"/home/gerardo/NativeScript/mhapp/node_modules/nativescript-ui-sidedrawer/platforms/android/typings/sidedrawer.d.ts": "8256a2295125597755fe6a6faee866b0750e65f2",
+		"/home/gerardo/NativeScript/mhapp/node_modules/nativescript-ui-sidedrawer/platforms/android/TNSSideDrawer-release.aar": "e6e4d527ff85743c270768018b9ea720ec5b9dda"
+	},
+	"nativescript-ui-core": {
+		"/home/gerardo/NativeScript/mhapp/node_modules/nativescript-ui-core/platforms/android/typings/core.d.ts": "5c032652edfa1719ef8c8190fc0f66d3b1c313c2",
+		"/home/gerardo/NativeScript/mhapp/node_modules/nativescript-ui-core/platforms/android/TNSCore-release.aar": "0e2fe0b867821ad56b8f0b9c8ac4c90f4c399e3c"
+	},
+	"tns-core-modules-widgets": {
+		"/home/gerardo/NativeScript/mhapp/node_modules/tns-core-modules-widgets/platforms/android/widgets-release.aar": "0ff68ea2dea492d8ca6c2803f5700f1872126431"
+	}
+}

@@ -1,0 +1,1 @@
+/home/gerardo/NativeScript/mhapp/platforms/android/app/src/main/java
